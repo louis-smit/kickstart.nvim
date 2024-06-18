@@ -390,7 +390,7 @@ require('lazy').setup({
           file_ignore_patterns = {
             'node_modules',
             'public',
-            'build',
+            'build/',
             '_build',
             'dist',
             'priv/static',
