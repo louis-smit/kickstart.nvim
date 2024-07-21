@@ -262,7 +262,15 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      }
+    end,
+    opts = {},
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -637,6 +645,8 @@ require('lazy').setup({
         },
       }
 
+      require('lspconfig').gleam.setup {}
+
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -937,6 +947,7 @@ require('lazy').setup({
         'vimdoc',
         'elixir',
         'heex',
+        'gleam',
         'svelte',
         'go',
         'gomod',
