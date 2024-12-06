@@ -675,7 +675,7 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         svelte = {},
-        nextls = {},
+
         emmet_language_server = {
           filetypes = {
             'elixir',
@@ -701,8 +701,6 @@ require('lazy').setup({
         },
       }
 
-      require('lspconfig').gleam.setup {}
-
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
@@ -716,7 +714,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        'elixir-ls',
+        'dockerls',
+        'lexical',
         'goimports',
         'gofumpt',
         'gomodifytags',
@@ -920,12 +919,13 @@ require('lazy').setup({
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
-          { name = 'copilot', group_index = 2 },
+          -- { name = 'copilot', group_index = 2 },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          { name = 'supermaven' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
