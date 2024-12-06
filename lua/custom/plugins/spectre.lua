@@ -2,6 +2,18 @@ return {
   {
     'nvim-pack/nvim-spectre',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      replace_engine = {
+        ['sed'] = {
+          cmd = 'sed',
+          args = {
+            '-i',
+            '',
+            '-E',
+          },
+        },
+      },
+    },
     config = function(_, opts)
       require('spectre').setup(opts)
 
